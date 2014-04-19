@@ -1,0 +1,11 @@
+---
+language: python
+python: "2.7"
+before_install:
+ - sudo apt-get update -qq
+ - sudo apt-get install -qq python-apt python-pycurl
+install:
+  - pip install ansible
+script:
+  - ansible-playbook -i "metrics ansible_ssh_host=127.0.0.1," --syntax-check playbook.yml
+  - ansible-playbook -i "metrics ansible_ssh_host=127.0.0.1," --connection=local --user=root --sudo -vvvv playbook.yml
