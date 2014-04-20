@@ -1,0 +1,8 @@
+---
+# defaults file for sonar
+# set_unless[:sonar][:port]        = 80
+# set_unless[:sonar][:hostname]    = "sonar.typo3.local"
+# set_unless[:sonar][:name]        = "TYPO3 Sonar"
+# set_unless[:sonar][:version]     = "0.2"
+# set_unless[:sonar][:webroot]     = "/var/www/"
+# set_unless[:sonar][:approot]     = "/var/www/"

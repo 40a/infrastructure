@@ -1,0 +1,108 @@
+#-e This is a basic VCL configuration file for varnish.  See the vcl(7)
+#man page for details on VCL syntax and semantics.
+#
+#Backend definitions
+#
+backend default {
+.host = "192.168.XX.XX";
+.port = "8080";
+}
+
+acl editors {
+ "192.168.0.1"/24;
+}
+
+sub vcl_recv {
+    if (req.request != "GET" &&
+      req.request != "HEAD" &&
+      req.request != "PUT" &&
+      req.request != "POST" &&
+      req.request != "TRACE" &&
+      req.request != "OPTIONS" &&
+      req.request != "DELETE") {
+        /* Non-RFC2616 or CONNECT which is weird. */
+        return (pipe);
+    }
+    if (req.request != "GET" && req.request != "HEAD") {
+        /* We only deal with GET and HEAD by default */
+        return (pass);
+    }
+
+	# Ping for monitoring
+	if (req.url ~ "^/varnish-ping$") {
+	  error 200 "OK";
+	}
+
+    #do not cache in monitoring view
+    if (req.url ~ "/monitoring") {
+        return (pipe);
+    }
+
+    #Respect force-reload, and clear cache
+	# do only allow for editors
+    if (client.ip ~ editors && req.http.Cache-Control ~ "no-cache") {
+       purge_url(req.url);
+       return (pass);
+    }
+
+    #Always cache all images
+    if (req.url ~ "\.(png|gif|jpg|swf)$" && req.url ~ ! "^mostimportant.jpg$" ) {
+        remove req.http.cookie;
+		return(lookup);
+    }
+
+    # feeds are not cached
+    if (req.url ~ "/rss" || req.url == "/comments/feed") {
+      pipe;
+    }
+
+    # Remove unneeded headers
+    remove req.http.X-Hudson;
+    remove req.http.X-Hudson-CLI-Port;
+    remove req.http.X-Hudson-Theme;
+    remove req.http.X-Powered-By;
+    remove req.http.X-Forwarded-For;
+
+    ##MOC: Do not cache if be_typo_user
+    if (req.http.Authorization || req.http.Cookie ~ ".*be_typo_user=.*") {
+        return (pass);
+    }
+    return (lookup);
+}
+
+sub vcl_fetch {
+    if (req.url ~ "\.(png|gif|jpg|swf)$") {
+       unset obj.http.set-cookie;
+       set obj.http.X-Cacheable = "YES:jpg,gif,jpg ans swf are always cached";
+       return (deliver);
+    }
+    if (req.http.Cache-Control ~ "no-cache") {
+      set obj.http.X-Cacheable = "NO:Force reload";       
+      return (pass);
+    }
+
+    #dont cache for typo3 backend users
+    if (req.http.Cookie ~ ".*be_typo_user=.*") {
+        set obj.http.X-Cacheable = "NO:Logged in to TYPO3 Backend";
+	return (pass);    
+    } elsif ( obj.http.Cache-Control ~ "private") {
+        set obj.http.X-Cacheable = "NO:Cache-Control=private";
+	return (pass);
+    } elsif ( obj.ttl < 1s ) {
+    	# Here we override the default setting of the cache control headers, we force caching
+        set obj.ttl   = 60s;
+        set obj.grace = 60s;
+        set obj.http.X-Cacheable = "YES:FORCED for 60s";
+	return (deliver);
+    } else {
+        set obj.http.X-Cacheable = "YES";
+	return (deliver);
+    }
+
+    if (obj.http.Set-Cookie) {
+        return (pass);
+    }
+
+    return (deliver);
+}
+

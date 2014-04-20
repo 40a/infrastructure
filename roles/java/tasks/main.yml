@@ -1,0 +1,28 @@
+---
+
+- name: Install Java dependencies
+  apt: pkg=$item state=installed update-cache=yes
+  with_items:
+    - openjdk-7-jdk
+    - openjdk-7-jre
+
+- name: Maven | Make sure maven is installed
+  apt: pkg=maven2
+
+
+#   "default" => ["openjdk-6-jdk","default-jdk"]
+# )
+
+# execute "update-java-alternatives" do
+#   command "update-java-alternatives -s java-6-openjdk"
+#   returns [0,2]
+#   action :nothing
+#   only_if { platform?("ubuntu", "debian") }
+# end
+
+# pkgs.each do |pkg|
+#   package pkg do
+#     action :install
+#     notifies :run, "execute[update-java-alternatives]"
+#   end
+# end

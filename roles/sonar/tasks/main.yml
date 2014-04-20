@@ -1,0 +1,58 @@
+---
+# tasks file for sonar
+
+# case node.platform
+# when "debian"
+#   package "wget"
+#   package "unzip"
+#   package "maven2"
+
+#   # Following The2minutestutorial
+#   # @see http://docs.codehaus.org/display/SONAR/Install+Sonar#InstallSonar-The2minutestutorial
+#   # TODO Clean up previous version. I will use this aproach:
+#   # @see http://webcache.googleusercontent.com/search?q=cache:GGddIHVmJScJ:www.wakaleo.com/component/content/article/187+sonar+debian+service&hl=en&client=firefox-a&gl=de&strip=1
+
+#   # TODO add variable for version number
+#   # execute "wget -O /tmp/sonar-2.2.zip http://dist.sonar.codehaus.org/sonar-2.2.zip"
+#   remote_file "/tmp/sonar-2.2.zip" do
+#     source "http://dist.sonar.codehaus.org/sonar-2.2.zip"
+#     mode "0644"
+#     checksum "76dd46b1a720dce52cd4a5c9414cd562" # md5
+#   end
+
+#   # execute "unzip /tmp/sonar-2.2.zip"
+#   execute "unzip" do
+#     command "unzip /tmp/sonar-2.2.zip"
+#     creates "/tmp/sonar-2.2.zip"
+#     action :run
+#   end
+
+#   execute "mv /tmp/sonar-2.2 /usr/local"
+
+#   link "/usr/local/sonar" do
+#     to "/usr/local/sonar-2.2"
+#   end
+
+#   # TODO Add variable for architecture
+#   execute "cp /usr/local/sonar/bin/linux-x86-32/sonar.sh /etc/init.d/sonar"
+
+#   # TRICKY PART: make sure to load the correct architecture
+#   # bin/linux-x86-32/sonar.sh console
+#   # mvn clean install sonar:sonar
+
+#   template "/usr/local/sonar/conf/sonar.properties" do
+#     source "sonar.properties.erb"
+#   end
+
+#   execute "chkconfig --add sonar"
+# end
+
+# service "sonar" do
+#   supports :start => true, :status => true, :restart => true, :reload => true
+#   action [ :enable, :start ]
+# end
+
+# nginx_site node[:sonar][:domain] do
+#   ssl_only false
+#   upstream ["127.0.0.1:#{node[:sonar][:port]}"]
+# end

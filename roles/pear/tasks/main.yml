@@ -1,0 +1,34 @@
+---
+# tasks file for pear
+
+# execute "pear channel-update pear.php.net"
+# execute "pear update-channels"
+# execute "pear upgrade-all"
+# # @see http://www.phpunit.de/manual/3.5/en/installation.html
+# execute "pear channel-discover pear.phpunit.de"
+# execute "pear channel-discover pear.symfony-project.com"
+# execute "pear install phpunit/PHPUnit"
+# execute "pear install PHP_CodeSniffer"
+# execute "pear channel-discover pear.typo3.org"
+# execute "pear install typo3/PHPCS_TYPO3_SniffPool-alpha"
+# execute "pear install typo3/PHPCS_TYPO3v4_Standard-alpha"
+
+# # NOT SUPPORTED YET
+# # http://pdepend.org/documentation/getting-started.html
+# execute "pear channel-discover pear.pdepend.org"
+# execute "pear install pdepend/PHP_Depend-beta"
+
+# # http://github.com/sebastianbergmann/phpcpd
+# #
+# # IMPORTANT: phpcpd needs PHP 5.2.7 - Lenny has 5.2.6
+# # Solution: http://www.dotdeb.org/instructions/
+# # execute "pear install phpunit/phploc"
+# # execute "pear install phpunit/File_Iterator"
+# execute "pear channel-discover components.ez.no"
+# execute "pear install --alldeps phpunit/phpcpd"
+
+# # http://phpmd.org/documentation/index.html
+# # http://pear.phpmd.org/
+# execute "pear channel-discover pear.phpmd.org"
+# execute "pear channel-update phpmd"
+# execute "pear install --alldeps phpmd/PHP_PMD-alpha"

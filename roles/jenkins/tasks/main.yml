@@ -1,0 +1,15 @@
+---
+- name: Add jenkins apt-key
+  apt_key: url=${jenkins.apt.key} state=present
+  tags:
+    - jenkins
+
+- name: Configure apt repository manually to get around missing source repository problem
+  apt_repository: repo='${jenkins.apt.repository}' state=present update_cache=true
+  tags:
+    - jenkins
+
+- name: Install Jenkins
+  apt: pkg=jenkins state=installed
+  tags:
+    - jenkins

@@ -1,0 +1,8 @@
+---
+# @see http://pkg.jenkins-ci.org/debian-stable/
+jenkins:
+  home: /var/lib/jenkins
+  apt:
+    repository: 'deb http://pkg.jenkins-ci.org/debian-stable/ binary/'
+    key: 'http://pkg.jenkins-ci.org/debian-stable/jenkins-ci.org.key'
+  cli: '{{ jenkins.home }}/jenkins-cli.jar'
