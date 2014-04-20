@@ -12,7 +12,7 @@ desc "Setup repo after initial checkout"
 task :setup do
   puts "WARN Please remove the vagrant gem and install vagrant as a package: http://downloads.vagrantup.com/" if `which vagrant`.include?("/gems/")
   puts "WARN Vagrant seems not installed as a package or is not in the PATH." unless `which vagrant`
-  puts "WARN Vagrant version is not correct." unless `vagrant --version`.include?("1.5.2")
+  puts "WARN Vagrant version is not correct." unless `vagrant --version`.include?("1.6.2")
   Rake::Task["install"].invoke
 end
 
