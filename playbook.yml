@@ -2,6 +2,6 @@
 - hosts: metrics
   roles:
     - role: common
-    - role: jenkins
-    - role: sonar
-    - role: pirum
+    # - role: jenkins
+    # - role: sonar
+    # - role: pirum
