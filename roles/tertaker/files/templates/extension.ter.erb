@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>&lt;h2&gt;Metrics for extension "<%= @ext_key %>" <%= @conf['version'] %>&lt;/h2&gt;
+&lt;img alt=&quot;Icon for extension &#x27;<%= @ext_key %>&#x27;&quot; src=&quot;ws/ext_icon.gif&quot; style=&quot;margin: 1em; width: 5em;&quot;/&gt;
+<%= Sanitize.clean(@conf['description']) %></description>
+  <logRotator>
+    <daysToKeep>7</daysToKeep>
+    <numToKeep>10</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.plugins.sidebar__link.ProjectLinks>
+      <links>
+        <hudson.plugins.sidebar__link.LinkAction>
+          <url>http://typo3.org/extensions/repository/view/<%= @ext_key %>/current/</url>
+          <text><%= @ext_key %></text>
+          <icon>/job/extension-<%= @ext_key %>/ws/ext_icon.gif</icon>
+        </hudson.plugins.sidebar__link.LinkAction>
+      </links>
+    </hudson.plugins.sidebar__link.ProjectLinks>
+    <hudson.plugins.disk__usage.DiskUsageProperty/>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <name></name>
+        <refspec></refspec>
+        <url><%= @conf['repositoryurl'] %></url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>**</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <recursiveSubmodules>false</recursiveSubmodules>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <authorOrCommitter>false</authorOrCommitter>
+    <clean>false</clean>
+    <wipeOutWorkspace>false</wipeOutWorkspace>
+    <pruneBranches>false</pruneBranches>
+    <buildChooser class="hudson.plugins.git.util.DefaultBuildChooser"/>
+    <gitTool>Default</gitTool>
+    <submoduleCfg class="list"/>
+    <relativeTargetDir></relativeTargetDir>
+    <excludedRegions></excludedRegions>
+    <excludedUsers></excludedUsers>
+    <gitConfigName></gitConfigName>
+    <gitConfigEmail></gitConfigEmail>
+    <skipTag>false</skipTag>
+    <scmName></scmName>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <quietPeriod>0</quietPeriod>
+  <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.plugins.templateproject.ProxyBuilder>
+      <projectName>include_template_v4_extension</projectName>
+    </hudson.plugins.templateproject.ProxyBuilder>
+  </builders>
+  <publishers>
+    <hudson.plugins.templateproject.ProxyPublisher>
+      <projectName>include_template_v4_extension</projectName>
+    </hudson.plugins.templateproject.ProxyPublisher>
+    <hudson.plugins.sonar.SonarPublisher>
+      <configVersion>1</configVersion>
+      <branch></branch>
+      <language>php</language>
+      <mavenOpts></mavenOpts>
+      <jobAdditionalProperties>
+-Dsonar.phpUnit.analyzeOnly=false
+-Dsonar.phpUnit.shouldRun=false
+-Dsonar.phpUnit.coverage.shouldRun=false
+-Dsonar.phpcpd.analyzeOnly=true
+-Dsonar.phpDepend.analyzeOnly=true
+-Dsonar.phpPmd.analyzeOnly=true
+-Dsonar.phpCodesniffer.analyzeOnly=true
+-Dsonar.phpCodesniffer.standardArgument=TYPO3v4
+-Dsonar.projectDate=<%= Time.at(@conf['lastuploaddate'].to_i).strftime("%Y-%m-%d") %>
+      </jobAdditionalProperties>
+      <mavenInstallationName></mavenInstallationName>
+      <rootPom></rootPom>
+      <lightProject>
+        <groupId>org.typo3</groupId>
+        <artifactId>extension-<%= @ext_key %></artifactId>
+        <projectName>extension-<%= @ext_key %></projectName>
+        <projectVersion><%= @conf['version'] %></projectVersion>
+        <projectDescription><%= Sanitize.clean(@conf['description']) %></projectDescription>
+        <javaVersion></javaVersion>
+        <projectSrcDir>.</projectSrcDir>
+        <projectSrcEncoding>UTF-8</projectSrcEncoding>
+        <projectBinDir></projectBinDir>
+      </lightProject>
+    </hudson.plugins.sonar.SonarPublisher>
+  </publishers>
+  <buildWrappers>
+    <hudson.plugins.build__timeout.BuildTimeoutWrapper>
+      <timeoutMinutes>10</timeoutMinutes>
+      <failBuild>true</failBuild>
+    </hudson.plugins.build__timeout.BuildTimeoutWrapper>
+  </buildWrappers>
+</project>

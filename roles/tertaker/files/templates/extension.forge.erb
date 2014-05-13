@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>&lt;h2&gt;Metrics for extension "<%= @ext_key %>" <%= @conf['version'] %>&lt;/h2&gt;
+&lt;img alt=&quot;Icon for extension &#x27;<%= @ext_key %>&#x27;&quot; src=&quot;ws/ext_icon.gif&quot; style=&quot;margin: 1em; width: 5em;&quot;/&gt;
+<%= Sanitize.clean(@conf['description']) %></description>
+  <logRotator>
+    <daysToKeep>7</daysToKeep>
+    <numToKeep>10</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.plugins.redmine.RedmineProjectProperty>
+      <redmineWebsite>http://forge.typo3.org/projects/show/</redmineWebsite>
+      <projectName>extension-<%= @ext_key %></projectName>
+      <redmineVersion>true</redmineVersion>
+    </hudson.plugins.redmine.RedmineProjectProperty>
+    <hudson.plugins.disk__usage.DiskUsageProperty/>
+  </properties>
+  <!-- TODO ct 2011-08-10 Choose SCM acording to the given SCM-Info from forge -->
+  <scm class="hudson.scm.SubversionSCM">
+    <locations>
+      <hudson.scm.SubversionSCM_-ModuleLocation>
+        <remote>https://svn.typo3.org/TYPO3v4/Extensions/<%= @conf['extension_path'] %></remote>
+        <local>.</local>
+      </hudson.scm.SubversionSCM_-ModuleLocation>
+    </locations>
+    <browser class="hudson.plugins.redmine.RedmineRepositoryBrowser"/>
+    <excludedRegions></excludedRegions>
+    <includedRegions></includedRegions>
+    <excludedUsers></excludedUsers>
+    <excludedRevprop></excludedRevprop>
+    <excludedCommitMessages></excludedCommitMessages>
+    <workspaceUpdater class="hudson.scm.subversion.UpdateWithCleanUpdater"/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <quietPeriod>0</quietPeriod>
+  <blockBuildWhenUpstreamBuilding>true</blockBuildWhenUpstreamBuilding>
+  <triggers class="vector"/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.plugins.templateproject.ProxyBuilder>
+      <projectName>include_template_v4_extension</projectName>
+    </hudson.plugins.templateproject.ProxyBuilder>
+  </builders>
+  <publishers>
+    <hudson.plugins.templateproject.ProxyPublisher>
+      <projectName>include_template_v4_extension</projectName>
+    </hudson.plugins.templateproject.ProxyPublisher>
+    <hudson.plugins.sonar.SonarPublisher>
+      <configVersion>1</configVersion>
+      <branch></branch>
+      <language>php</language>
+      <mavenOpts></mavenOpts>
+      <jobAdditionalProperties>
+-Dsonar.phpUnit.analyzeOnly=false
+-Dsonar.phpUnit.shouldRun=false
+-Dsonar.phpUnit.coverage.shouldRun=false
+-Dsonar.phpcpd.analyzeOnly=true
+-Dsonar.phpDepend.analyzeOnly=true
+-Dsonar.phpPmd.analyzeOnly=true
+-Dsonar.phpCodesniffer.analyzeOnly=true
+-Dsonar.phpCodesniffer.standardArgument=TYPO3v4
+      </jobAdditionalProperties>
+      <mavenInstallationName></mavenInstallationName>
+      <rootPom></rootPom>
+      <lightProject>
+        <groupId>org.typo3</groupId>
+        <artifactId>extension-<%= @ext_key %></artifactId>
+        <projectName>extension-<%= @ext_key %></projectName>
+        <projectVersion><%= @conf['version'] %></projectVersion>
+        <projectDescription><%= Sanitize.clean(@conf['description']) %></projectDescription>
+        <javaVersion></javaVersion>
+        <projectSrcDir>.</projectSrcDir>
+        <projectSrcEncoding>UTF-8</projectSrcEncoding>
+        <projectBinDir></projectBinDir>
+      </lightProject>
+    </hudson.plugins.sonar.SonarPublisher>
+  </publishers>
+  <buildWrappers>
+    <hudson.plugins.build__timeout.BuildTimeoutWrapper>
+      <timeoutMinutes>10</timeoutMinutes>
+      <failBuild>true</failBuild>
+    </hudson.plugins.build__timeout.BuildTimeoutWrapper>
+  </buildWrappers>
+</project>
