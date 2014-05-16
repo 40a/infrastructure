@@ -13,4 +13,4 @@ before_script:
 script:
   - ansible-playbook -i "127.0.0.1," --syntax-check playbook.yml
   - ansible-playbook -i "[metrics] 127.0.0.1," --connection=local --user=root --sudo -vvvv playbook.yml
-  - ASK_SUDO_PASSWORD=0 rake serverspec
+  - rake serverspec
