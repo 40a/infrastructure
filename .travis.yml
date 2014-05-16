@@ -4,8 +4,13 @@ python: "2.7"
 before_install:
  - sudo apt-get update -qq
  - sudo apt-get install -qq python-apt python-pycurl
+ - sudo apt-get install -qq ruby-dev
 install:
   - pip install ansible
+  - gem install bundler --no-ri --no-rdoc
+before_script:
+  - bundle install
 script:
   - ansible-playbook -i "127.0.0.1," --syntax-check playbook.yml
   - ansible-playbook -i "[metrics] 127.0.0.1," --connection=local --user=root --sudo -vvvv playbook.yml
+  - rake serverspec
