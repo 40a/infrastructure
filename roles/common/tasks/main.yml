@@ -55,4 +55,5 @@
 - name: Ruby | Make sure essential ruby packages and compilers are installed/up-to-date
   apt: pkg={{ item }}
   with_items:
-    - libheader
+    - libxslt-dev
+    - libxml2-dev
