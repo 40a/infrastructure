@@ -8,13 +8,6 @@ include Serverspec::Helper::Properties
 if ENV["TRAVIS"]
   say "Detected TRAVIS environment. Executing tests locally..."
   include SpecInfra::Helper::Exec
-  RSpec.configure do |c|
-    c.disable_sudo = true
-    c.sudo_password = ""
-    c.sudo_options = [
-      "-u root"
-    ]
-  end
 else
   # Run tests via SSH when testing locally on a VM
   RSpec.configure do |c|
