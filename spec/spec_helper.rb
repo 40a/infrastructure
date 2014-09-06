@@ -23,7 +23,7 @@ else
       say "running 'vagrant up #{target_vm}'"
       say "this can take quite a while, if the box is not yet up!"
       vagrant_up = `vagrant up #{target_vm}`
-      say "running 'vagrant ss-config #{target_vm}'"
+      say "running 'vagrant ssh-config #{target_vm}' to get SSH configuration"
       config = `vagrant ssh-config #{target_vm}`
 
       if config != ""
