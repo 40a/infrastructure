@@ -1,0 +1,6 @@
+---
+- name: Create database user
+  mysql_user: name=sonar host=localhost password=sonar priv=sonar.\*:ALL state=present
+
+- name: Create database
+  mysql_db: name=sonar state=present

@@ -1,58 +1,60 @@
 ---
-# tasks file for sonar
+- name: Install requirements
+  apt: pkg={{ item }}
+    state: installed
+    update_cache: yes
+    cache_valid_time: 3600
+    with_items:
+      - wget
+      - unzip
+      - maven2
 
-# case node.platform
-# when "debian"
-#   package "wget"
-#   package "unzip"
-#   package "maven2"
+- name: Download archive
+  get_url:
+    url: http://dist.sonar.codehaus.org/sonar-{{ sonar_version }}.zip
+    dest: /opt/sonar-{{ sonar_version }}.zip
+    mode: 0644
 
-#   # Following The2minutestutorial
-#   # @see http://docs.codehaus.org/display/SONAR/Install+Sonar#InstallSonar-The2minutestutorial
-#   # TODO Clean up previous version. I will use this aproach:
-#   # @see http://webcache.googleusercontent.com/search?q=cache:GGddIHVmJScJ:www.wakaleo.com/component/content/article/187+sonar+debian+service&hl=en&client=firefox-a&gl=de&strip=1
+- name: Extract archive
+  sudo: yes
+  unarchive:
+    src: /opt/sonar-{{ sonar_version }}.zip
+    dest: /opt/
+    creates: /opt/sonar-{{ sonar_version }}
+    copy: no
+  register: new_version
 
-#   # TODO add variable for version number
-#   # execute "wget -O /tmp/sonar-2.2.zip http://dist.sonar.codehaus.org/sonar-2.2.zip"
-#   remote_file "/tmp/sonar-2.2.zip" do
-#     source "http://dist.sonar.codehaus.org/sonar-2.2.zip"
-#     mode "0644"
-#     checksum "76dd46b1a720dce52cd4a5c9414cd562" # md5
-#   end
+# - name: Fetch old plugins if available
+#   shell: ls -1 /opt/sonar/plugins
+#   register: plugin_list
+#   ignore_errors: yes
 
-#   # execute "unzip /tmp/sonar-2.2.zip"
-#   execute "unzip" do
-#     command "unzip /tmp/sonar-2.2.zip"
-#     creates "/tmp/sonar-2.2.zip"
-#     action :run
-#   end
+# - name: Copy old extensions
+#   command: cp -R /opt/sonar/plugins /opt/sonar-{{ sonar_version }}/plugins
+#   when: new_version|changed and plugin_list.rc == 0
 
-#   execute "mv /tmp/sonar-2.2 /usr/local"
+- name: Apply property files
+  copy:
+    src: conf
+    dest: /opt/sonar-{{ sonar_version }}
+    owner: root
+    group: root
+    mode: 0644
 
-#   link "/usr/local/sonar" do
-#     to "/usr/local/sonar-2.2"
-#   end
+- name: Link current version
+  file:
+    state: link
+    src: /opt/sonar-{{ sonar_version }}
+    dest: /opt/sonar
 
-#   # TODO Add variable for architecture
-#   execute "cp /usr/local/sonar/bin/linux-x86-32/sonar.sh /etc/init.d/sonar"
+- name: Link init script
+  file:
+    state: link
+    src: /opt/sonar/bin/linux-{{ ansible_architecture | regex_replace('_', '-') }}/sonar.sh
+    dest: /etc/init.d/sonar
 
-#   # TRICKY PART: make sure to load the correct architecture
-#   # bin/linux-x86-32/sonar.sh console
-#   # mvn clean install sonar:sonar
+- include: database.yml
+- include: vhost.yml
 
-#   template "/usr/local/sonar/conf/sonar.properties" do
-#     source "sonar.properties.erb"
-#   end
-
-#   execute "chkconfig --add sonar"
-# end
-
-# service "sonar" do
-#   supports :start => true, :status => true, :restart => true, :reload => true
-#   action [ :enable, :start ]
-# end
-
-# nginx_site node[:sonar][:domain] do
-#   ssl_only false
-#   upstream ["127.0.0.1:#{node[:sonar][:port]}"]
-# end
+- name: Enable service
+  service: name=sonar state=started enabled=yes
