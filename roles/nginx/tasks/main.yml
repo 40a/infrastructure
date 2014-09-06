@@ -1,16 +1,9 @@
 ---
-# tasks file for nginx
 - name: Install nginx
   apt: pkg=nginx state=installed
 
-- name: Create/sync the site configuration
-  template: src=$nginx_vhost_template dest=/etc/nginx/sites-available/$nginx_site mode=0755
+#- name: Ensure default nginx site is not enabled
+#  file: path=/etc/nginx/sites-enabled/default state=absent
 
-- name: ensure default Nginx site is not enabled
-  file: state=absent path=/etc/nginx/sites-enabled/default
-
-- name: Enable the site
-  file: state=link src=/etc/nginx/sites-available/$nginx_site path=/etc/nginx/sites-enabled/$nginx_site
-
-- name: restart nginx
-  service: name=nginx state=started
+- name: Restart nginx
+  service: name=nginx state=started enabled=yes
