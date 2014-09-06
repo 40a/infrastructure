@@ -2,6 +2,10 @@
 
 This role installs and configures `mysql`, which is used by `sonar` to store code metrics.
 
+# Backups
+
+    mysqldump --opt --single-transaction -u sonar -p sonar > $HOME/`date --iso-8601`-sonar.backup.sql
+
 
 # Example Playbook
 

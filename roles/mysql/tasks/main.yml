@@ -1,2 +1,27 @@
 ---
-# tasks file for mysql
+- name: Install packages
+  apt: pkg={{ item }} state=installed
+  with_items: mysql_packages
+
+#- name: Create root password
+#  command: /usr/bin/openssl rand -base64 16
+#  register: mysql_root_passwd
+#
+#- name: Delete anonymous user
+#  mysql_user: name="" state=absent
+#
+#- name: Remove test database
+#  mysql_db: name=test state=absent
+#
+#- name: Create my.cnf file with password credentials
+#  template: src=my.cnf.j2 dest=/root/.my.cnf owner=root group=root mode=0600
+#
+#- name: Change default root user
+#  sudo: yes
+#  mysql_user: name=root host={{ item }}
+#  with_items:
+#    - "{{ ansible_hostname }}"
+#    - 127.0.0.1
+#    - ::1
+#    - localhost
+#
