@@ -1,0 +1,15 @@
+---
+- name: PLUGINS | Create update folder
+  file: path={{ jenkins_home }}/updates owner=jenkins group=jenkins mode=0755 state=directory
+
+- name: PLUGINS | Update Jenkins plugin data
+  shell: curl -L https://updates.jenkins-ci.org/stable/update-center.json | sed '1d;$d' > /{{ jenkins_home }}/updates/default.json
+         creates=/{{ jenkins_home }}/updates/default.json
+
+- name: PLUGINS | Set permissions
+  file: path={{ jenkins_home }}/updates/default.json owner=jenkins group=users mode=0644
+
+- name: PLUGINS | Install
+  command: java -jar {{ jenkins_home }}/jenkins-cli.jar -i {{ jenkins_home }}/.ssh/id_rsa -s http://127.0.0.1:{{ jenkins_http_port }}/ install-plugin -deploy {{item}} creates={{ jenkins_home }}/plugins/{{item}}.jpi
+  with_items: jenkins_plugins
+  ignore_errors: yes

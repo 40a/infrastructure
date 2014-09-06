@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson.plugins.twitter.TwitterPublisher_-DescriptorImpl>
+  <helpRedirect/>
+  <token>198625612-eWaCK3NjnQ46crcltHNfOTmIxSxNBxWxgmp51EpZ</token>
+  <tokenSecret>2hwUGlACOV6Qdjp48ugUhLGq9t9xpYPg2LzaS2872NI</tokenSecret>
+  <hudsonUrl>https://ci.typo3.org/</hudsonUrl>
+  <onlyOnFailureOrRecovery>true</onlyOnFailureOrRecovery>
+  <includeUrl>true</includeUrl>
+</hudson.plugins.twitter.TwitterPublisher_-DescriptorImpl>

@@ -1,0 +1,46 @@
+---
+- name: Write service defaults
+  template: src=defaults
+            dest=/etc/default/jenkins
+            owner=root
+            group=root
+            mode=0644
+            backup=yes
+
+- name: Set global configuration
+  copy: src=config/*
+            dest="{{ jenkins_home }}/"
+            owner=jenkins
+            group=users
+            mode=0644
+            backup=yes
+  notify: reload jenkins configuration
+
+- name: Make sure we don't build jobs on startup when in maintenance mode
+  copy: src="init.groovy" dest="{{ jenkins_home }}/init.groovy" owner=jenkins group=jenkins mode=0644
+  when: jenkins_maintenance == true
+
+- name: Create 'userContent' folder
+  file: path={{ jenkins_home }}/userContent
+        owner=jenkins
+        group=users
+        mode=0775
+        recurse=yes
+        state=directory
+
+- name: Copy 'userContent'
+  copy: src=userContent
+        dest={{ jenkins_home }}/userContent
+        owner=jenkins
+        group=users
+        mode=0644
+
+- name: Ensure that service is started and runs on startup
+  service: name=jenkins state=started enabled=yes
+
+- name: Wait for web interface
+  shell: curl -I http://localhost:{{ jenkins_http_port }}
+  register: jenkins_status
+  until: "'HTTP/1.1' in jenkins_status.stdout"
+  retries: 5
+  delay: 10

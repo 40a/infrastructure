@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<user>
+  <fullName>Sebastian Kurfürst</fullName>
+  <description></description>
+  <properties>
+    <hudson.security.HudsonPrivateSecurityRealm_-Details>
+      <passwordHash>bbLeuI:a42fd871bb4b0137b6bb19cc9d877eb575525dbf7d2079c5a1082bb6c1224d02</passwordHash>
+    </hudson.security.HudsonPrivateSecurityRealm_-Details>
+    <hudson.model.MyViewsProperty>
+      <primaryViewName>All</primaryViewName>
+      <views>
+        <hudson.model.AllView>
+          <owner class="hudson.model.MyViewsProperty" reference="../../.."/>
+          <name>All</name>
+          <filterExecutors>false</filterExecutors>
+          <filterQueue>false</filterQueue>
+        </hudson.model.AllView>
+      </views>
+    </hudson.model.MyViewsProperty>
+    <hudson.plugins.favorite.user.FavoriteUserProperty>
+      <favorites/>
+    </hudson.plugins.favorite.user.FavoriteUserProperty>
+    <jenkins.security.ApiTokenProperty>
+      <apiToken>6GjwP3eSUD6oRqWuDJoJb1VZiYfquK+vdHy1tKpt9BLH4zrbYcCyJeLWQTc26xjB</apiToken>
+    </jenkins.security.ApiTokenProperty>
+    <hudson.search.UserSearchProperty>
+      <insensitiveSearch>false</insensitiveSearch>
+    </hudson.search.UserSearchProperty>
+    <hudson.tasks.Mailer_-UserProperty>
+      <emailAddress>sebastian@typo3.org</emailAddress>
+    </hudson.tasks.Mailer_-UserProperty>
+  </properties>
+</user>

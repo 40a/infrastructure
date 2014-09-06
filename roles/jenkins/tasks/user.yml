@@ -1,0 +1,21 @@
+---
+- name: Create group
+  group: name=jenkins
+         gid=125
+         state=present
+
+- name: Create account
+  user: name=jenkins
+        uid=113
+        home={{ jenkins_home }}
+        shell=/bin/bash
+        groups=jenkins
+        append=yes
+        generate_ssh_key=yes
+        ssh_key_comment=jenkins@ci.typo3.org
+
+- name: Get public key
+  command: cat {{ jenkins_home }}/.ssh/id_rsa.pub
+  register: jenkins_public_key
+  changed_when: "'ssh-rsa' not in jenkins_public_key.stdout"
+  failed_when: "jenkins_public_key.stderr"

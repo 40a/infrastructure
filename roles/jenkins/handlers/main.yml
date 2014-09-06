@@ -1,5 +1,6 @@
 ---
-# Safe-restart Jenkins
-- name: Restart Jenkins
-#  sudo: yes
-  command: java -jar {{ jenkins.cli }} -s http://localhost:8080 safe-restart
+- name: jenkins restart
+  shell: java -jar {{ jenkins_home }}/jenkins-cli.jar -i {{ jenkins_home }}/.ssh/id_rsa -s http://127.0.0.1:{{jenkins_http_port}}/ safe-restart
+
+- name: reload jenkins configuration
+  command: java -jar {{ jenkins_home }}/jenkins-cli.jar -i {{ jenkins_home }}/.ssh/id_rsa -s http://127.0.0.1:{{ jenkins_http_port }} reload-configuration

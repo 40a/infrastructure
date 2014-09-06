@@ -1,0 +1,40 @@
+---
+- name: Install command line interface
+  get_url: url=http://localhost:{{ jenkins_http_port }}/jnlpJars/jenkins-cli.jar
+           dest={{ jenkins_home }}/jenkins-cli.jar
+           owner=jenkins
+           group=users
+           mode=0644
+  retries: 10
+  delay: 10
+
+- name: Create 'users' folder
+  file: path={{ jenkins_home }}/users/jenkins-remote
+        owner=jenkins
+        group=users
+        mode=0775
+        recurse=yes
+        state=directory
+
+- name: Create 'jenkins-remote' user for secure CLI actions
+  template: src="users/jenkins-remote/config.xml.j2"
+            dest="{{ jenkins_home }}/users/jenkins-remote/config.xml"
+            owner=jenkins
+            group=users
+            mode=0644
+            backup=yes
+  register: jenkins_user_created
+
+- name: Wait for web interface
+  shell: curl -I http://localhost:{{ jenkins_http_port }}
+  register: jenkins_status
+  until: "'HTTP/1.1' in jenkins_status.stdout"
+  retries: 5
+  delay: 10
+
+- name: login user
+  command: java -jar {{ jenkins_home }}/jenkins-cli.jar -i {{ jenkins_home }}/.ssh/id_rsa -s http://127.0.0.1:{{ jenkins_http_port }} login
+
+- name: reload
+  command: java -jar {{ jenkins_home }}/jenkins-cli.jar -i {{ jenkins_home }}/.ssh/id_rsa -s http://127.0.0.1:{{ jenkins_http_port }} reload-configuration
+  when: jenkins_user_created.changed == true

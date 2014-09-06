@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<scriptler plugin="scriptler@2.7">
+  <scriptSet class="sorted-set">
+    <comparator class="org.jvnet.hudson.plugins.scriptler.util.ByNameSorter"/>
+    <script>
+      <id>Clear_build_queue.scriptlerweb.groovy</id>
+      <name>Clear_build_queue.scriptlerweb.groovy</name>
+      <comment>If you accidently trigger a lot of unneeded builds, it is useful to be able to cancel them all</comment>
+      <originCatalog>scriptlerweb</originCatalog>
+      <originScript>scriptlerweb.35001</originScript>
+      <originDate>12 Oct 2010 20:51:18 PM</originDate>
+      <available>true</available>
+      <nonAdministerUsing>false</nonAdministerUsing>
+      <onlyMaster>false</onlyMaster>
+    </script>
+    <script>
+      <id>Kill_all_jobs_in_build_queue.groovy</id>
+      <name>Kill_all_jobs_in_build_queue.groovy</name>
+      <comment>this script was discovered on the file system, please describe it!</comment>
+      <available>true</available>
+      <nonAdministerUsing>false</nonAdministerUsing>
+      <onlyMaster>false</onlyMaster>
+    </script>
+    <script>
+      <id>List_projects_with_scm_info.groovy</id>
+      <name>List_projects_with_scm_info.groovy</name>
+      <comment>this script was discovered on the file system, please describe it!</comment>
+      <available>true</available>
+      <nonAdministerUsing>false</nonAdministerUsing>
+      <onlyMaster>false</onlyMaster>
+    </script>
+    <script>
+      <id>Re-Run_all_valid_jobs.groovy</id>
+      <name>Re-Run_all_valid_jobs.groovy</name>
+      <comment>Re-Run all jobs that did not fail</comment>
+      <available>true</available>
+      <nonAdministerUsing>false</nonAdministerUsing>
+      <onlyMaster>false</onlyMaster>
+    </script>
+    <script>
+      <id>build_all_extension_jobs.groovy</id>
+      <name>build_all_extension_jobs.groovy</name>
+      <comment></comment>
+      <available>true</available>
+      <nonAdministerUsing>false</nonAdministerUsing>
+      <onlyMaster>false</onlyMaster>
+    </script>
+    <script>
+      <id>build_all_forgotten_extension_jobs.groovy</id>
+      <name>build_all_forgotten_extension_jobs.groovy</name>
+      <comment>If we missed some jobs (eg. because regex was wrong) we can use this script to get them started</comment>
+      <available>true</available>
+      <nonAdministerUsing>false</nonAdministerUsing>
+      <onlyMaster>false</onlyMaster>
+    </script>
+    <script>
+      <id>delete_jobs.groovy</id>
+      <name>delete_jobs.groovy</name>
+      <comment>Delete a bunch of jobs</comment>
+      <available>true</available>
+      <nonAdministerUsing>false</nonAdministerUsing>
+      <onlyMaster>false</onlyMaster>
+    </script>
+    <script>
+      <id>display_time_trigger.groovy</id>
+      <name>display_time_trigger.groovy</name>
+      <comment>this script was discovered on the file system, please describe it!</comment>
+      <available>true</available>
+      <nonAdministerUsing>false</nonAdministerUsing>
+      <onlyMaster>false</onlyMaster>
+    </script>
+    <script>
+      <id>get_job_descriptions.groovy</id>
+      <name>get_job_descriptions.groovy</name>
+      <comment></comment>
+      <available>true</available>
+      <nonAdministerUsing>false</nonAdministerUsing>
+      <onlyMaster>false</onlyMaster>
+    </script>
+    <script>
+      <id>get_last_build.groovy</id>
+      <name>get_last_build.groovy</name>
+      <comment></comment>
+      <available>true</available>
+      <nonAdministerUsing>false</nonAdministerUsing>
+      <onlyMaster>false</onlyMaster>
+    </script>
+    <script>
+      <id>listFailedJobs.scriptlerweb.groovy</id>
+      <name>listFailedJobs.scriptlerweb.groovy</name>
+      <comment>If you have a lot of job configured on your Hudson installation, you maybe want to have a list of job which last run fails. This script is taken from an article by &lt;a href=&quot;http://janmaterne.wordpress.com/2009/07/03/hudson-how-to-get-a-list-of-all-failed-jobs/&quot;&gt;&apos;Jan Materne&apos;&lt;/a&gt;</comment>
+      <originCatalog>scriptlerweb</originCatalog>
+      <originScript>scriptlerweb.26001</originScript>
+      <originDate>12 Oct 2010 20:51:54 PM</originDate>
+      <parameters/>
+      <available>true</available>
+      <nonAdministerUsing>false</nonAdministerUsing>
+      <onlyMaster>false</onlyMaster>
+    </script>
+    <script>
+      <id>run_failed_builds.groovy</id>
+      <name>run_failed_builds.groovy</name>
+      <comment>Run failed builds again</comment>
+      <available>true</available>
+      <nonAdministerUsing>false</nonAdministerUsing>
+      <onlyMaster>false</onlyMaster>
+    </script>
+    <script>
+      <id>set_job_descriptions_to_ext_icon.groovy</id>
+      <name>set_job_descriptions_to_ext_icon.groovy</name>
+      <comment></comment>
+      <available>true</available>
+      <nonAdministerUsing>false</nonAdministerUsing>
+      <onlyMaster>false</onlyMaster>
+    </script>
+    <script>
+      <id>set_log_rotation_for_extension_jobs.groovy</id>
+      <name>set_log_rotation_for_extension_jobs.groovy</name>
+      <comment>Sets the amount of days / builds for build history.</comment>
+      <available>true</available>
+      <nonAdministerUsing>false</nonAdministerUsing>
+      <onlyMaster>false</onlyMaster>
+    </script>
+    <script>
+      <id>set_timeout_for_jobs.groovy</id>
+      <name>set_timeout_for_jobs.groovy</name>
+      <comment>Sets the amount of minuts for stopping a build that went crazy / hung up. Kudos to http://janmaterne.wordpress.com/2010/07/11/how-to-check-if-all-hudson-jobs-have-a-timeout/</comment>
+      <available>true</available>
+      <nonAdministerUsing>false</nonAdministerUsing>
+      <onlyMaster>false</onlyMaster>
+    </script>
+  </scriptSet>
+  <disbableRemoteCatalog>false</disbableRemoteCatalog>
+  <allowRunScriptPermission>false</allowRunScriptPermission>
+  <allowRunScriptEdit>false</allowRunScriptEdit>
+</scriptler>

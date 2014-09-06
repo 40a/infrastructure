@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson.plugins.clover.CloverBuildWrapper_-DescriptorImpl plugin="clover@4.3.0">
+  <licenseCert></licenseCert>
+</hudson.plugins.clover.CloverBuildWrapper_-DescriptorImpl>

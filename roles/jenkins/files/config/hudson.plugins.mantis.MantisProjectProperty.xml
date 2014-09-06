@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson.plugins.mantis.MantisProjectProperty_-DescriptorImpl>
+  <sites>
+    <hudson.plugins.mantis.MantisSite>
+      <url>http://bugs.typo3.org/</url>
+      <version>V110</version>
+    </hudson.plugins.mantis.MantisSite>
+  </sites>
+</hudson.plugins.mantis.MantisProjectProperty_-DescriptorImpl>

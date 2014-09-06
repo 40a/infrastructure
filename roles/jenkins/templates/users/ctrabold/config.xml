@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<user>
+  <fullName>Christian Trabold</fullName>
+  <description></description>
+  <properties>
+    <jenkins.security.ApiTokenProperty>
+      <apiToken>biV3jOzBMVWhdIwvMk5pGZ0yEuCXkMWr3cPJn7quIVLH4zrbYcCyJeLWQTc26xjB</apiToken>
+    </jenkins.security.ApiTokenProperty>
+    <hudson.plugins.greenballs.ColorBlindProperty plugin="greenballs@1.14">
+      <enabledColorBlindSupport>false</enabledColorBlindSupport>
+    </hudson.plugins.greenballs.ColorBlindProperty>
+    <hudson.tasks.Mailer_-UserProperty plugin="mailer@1.8">
+      <emailAddress>info@christian-trabold.de</emailAddress>
+    </hudson.tasks.Mailer_-UserProperty>
+    <hudson.plugins.favorite.user.FavoriteUserProperty plugin="favorite@1.16">
+      <favorites/>
+    </hudson.plugins.favorite.user.FavoriteUserProperty>
+    <hudson.model.MyViewsProperty>
+      <primaryViewName>include_ Jobs</primaryViewName>
+      <views>
+        <hudson.model.ListView>
+          <owner class="hudson.model.MyViewsProperty" reference="../../.."/>
+          <name>include_ Jobs</name>
+          <description>Internal include_* Jobs that store default build steps for other jobs.</description>
+          <filterExecutors>true</filterExecutors>
+          <filterQueue>true</filterQueue>
+          <properties class="hudson.model.View$PropertyList"/>
+          <jobNames>
+            <comparator class="hudson.util.CaseInsensitiveComparator"/>
+            <string>include_template_v4_extension</string>
+            <string>internal_job_createmetrics</string>
+            <string>typo3-project-codesniffer-typo3</string>
+            <string>typo3-project-codesniffer-typo3-packaging</string>
+            <string>typo3-project-codesniffer-typo3v4-packaging</string>
+            <string>typo3-v4-core-gerrit</string>
+            <string>typo3-v4-core-nightly-test</string>
+            <string>typo3-v4-core-nightlyBuild</string>
+            <string>typo3-v4-core-releases</string>
+            <string>typo3-v4-core-smoketest</string>
+            <string>typo3-v4-core-testing</string>
+            <string>typo3-v4-core-uat</string>
+            <string>typo3-v4-core_4-5-gerrit</string>
+            <string>typo3v4-mvc</string>
+          </jobNames>
+          <jobFilters/>
+          <columns>
+            <hudson.views.StatusColumn/>
+            <hudson.views.WeatherColumn/>
+            <hudson.views.JobColumn/>
+            <hudson.views.LastSuccessColumn/>
+            <hudson.views.LastFailureColumn/>
+            <hudson.views.LastDurationColumn/>
+            <hudson.views.BuildButtonColumn/>
+            <hudson.plugins.favorite.column.FavoriteColumn plugin="favorite@1.16"/>
+          </columns>
+          <includeRegex>template_.*</includeRegex>
+          <recurse>false</recurse>
+        </hudson.model.ListView>
+      </views>
+    </hudson.model.MyViewsProperty>
+    <hudson.security.HudsonPrivateSecurityRealm_-Details>
+      <passwordHash>FcduYY:320ad44d959fcb7a01d8c55353eb56ba1137d80b3556dfc6e3788673b78ce6c7</passwordHash>
+    </hudson.security.HudsonPrivateSecurityRealm_-Details>
+    <org.jenkinsci.main.modules.cli.auth.ssh.UserPropertyImpl>
+      <authorizedKeys>ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAtNVutBqtua2hmX0axnq1+Yi/HZNBac0k2B+D7yiEHUqO7MaAgOlkG6EK8S5bwDS17D/clZGMi98F43O7EcxAiVOU18DMB9+CKSF5uCarqcaffa6f6mkBq3/U8ftVv0povpUQ4NeTFZiH59WFtHHVk4aAwc+dQsccik7JedvYhBTOnXNJeWg/TdVamCwVWug6or9EiFFgQKxIMkn0KAs9Job3VxBcbhdZlmPbBVP8/+UfLPfFa0T2+p3HKW0CsMABnYRLq5KCcZ23qtiPtuSlWGgq/JH3mTIA+QzmrCRpq7bRTknyYCTGgQvACjwSoG/xrI6bib4bN7vS29CIz4DQWQ== dkd-trabold@dkd.de</authorizedKeys>
+    </org.jenkinsci.main.modules.cli.auth.ssh.UserPropertyImpl>
+    <hudson.model.PaneStatusProperties>
+      <collapsed/>
+    </hudson.model.PaneStatusProperties>
+    <com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty plugin="credentials@1.10">
+      <domainCredentialsMap class="hudson.util.CopyOnWriteMap$Hash"/>
+    </com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty>
+    <hudson.plugins.ircbot.IrcUserProperty plugin="ircbot@2.25"/>
+    <hudson.plugins.jabber.user.JabberUserProperty plugin="jabber@1.25"/>
+    <hudson.search.UserSearchProperty>
+      <insensitiveSearch>false</insensitiveSearch>
+    </hudson.search.UserSearchProperty>
+    <jenkins.security.LastGrantedAuthoritiesProperty>
+      <roles>
+        <string>authenticated</string>
+      </roles>
+      <timestamp>1410001025241</timestamp>
+    </jenkins.security.LastGrantedAuthoritiesProperty>
+  </properties>
+</user>

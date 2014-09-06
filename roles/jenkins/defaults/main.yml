@@ -1,2 +1,57 @@
 ---
-# defaults file for jenkins
+jenkins_home: /var/lib/jenkins
+jenkins_version: 1.565.2
+jenkins_maintenance: false
+jenkins_http_port: 8081
+# tree -L 1 /var/lib/jenkins/plugins/ | grep -v -e "\(\.bak\|\.hpi\)$"
+jenkins_plugins:
+  - ant
+  - build-timeout
+  - checkstyle
+  - clover
+  - copy-to-slave
+  - dashboard-view
+  - disk-usage
+  - doclinks
+  - dropdown-viewstabbar-plugin
+  - dry
+  - email-ext
+  - envfile
+  - external-monitor-job
+  - favorite
+  - gerrit-trigger
+  - git
+  - greenballs
+  - groovy
+  - groovy-postbuild
+  - htmlpublisher
+  - instant-messaging
+  - ircbot
+  - jabber
+  - javadoc
+  - jdepend
+  - jobConfigHistory
+  - monitoring
+  - nested-view
+  - notification
+  - persona
+  - pmd
+  - postbuild-task
+  - promoted-builds
+  - redmine
+  - ruby
+  - sauce-ondemand
+  - scriptler
+  - sectioned-view
+  - sidebar-link
+  - sonar
+  - subversion
+  - tasks
+  - template-project
+  - tmpcleaner
+  - view-job-filters
+  - violations
+  - warnings
+  - windows-slaves
+  - ws-cleanup
+  - xunit

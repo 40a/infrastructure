@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<user>
+  <fullName>Stefano Kowalke</fullName>
+  <properties>
+    <hudson.model.MyViewsProperty>
+      <primaryViewName>All</primaryViewName>
+      <views>
+        <hudson.model.AllView>
+          <owner class="hudson.model.MyViewsProperty" reference="../../.."/>
+          <name>All</name>
+          <filterExecutors>false</filterExecutors>
+          <filterQueue>false</filterQueue>
+        </hudson.model.AllView>
+        <hudson.plugins.view.dashboard.Dashboard plugin="dashboard-view@2.9.2">
+          <owner class="hudson.model.MyViewsProperty" reference="../../.."/>
+          <name>Templates</name>
+          <filterExecutors>false</filterExecutors>
+          <filterQueue>false</filterQueue>
+          <jobNames>
+            <comparator class="hudson.util.CaseInsensitiveComparator"/>
+          </jobNames>
+          <jobFilters/>
+          <columns>
+            <hudson.views.StatusColumn/>
+            <hudson.views.WeatherColumn/>
+            <hudson.views.JobColumn/>
+            <hudson.views.LastSuccessColumn/>
+            <hudson.views.LastFailureColumn/>
+            <hudson.views.LastDurationColumn/>
+            <hudson.views.BuildButtonColumn/>
+          </columns>
+          <includeRegex>^include_template_.*|^template_internal_.*</includeRegex>
+          <recurse>false</recurse>
+          <useCssStyle>false</useCssStyle>
+          <includeStdJobList>true</includeStdJobList>
+          <leftPortletWidth>50%</leftPortletWidth>
+          <rightPortletWidth>50%</rightPortletWidth>
+          <leftPortlets/>
+          <rightPortlets/>
+          <topPortlets/>
+          <bottomPortlets/>
+        </hudson.plugins.view.dashboard.Dashboard>
+      </views>
+    </hudson.model.MyViewsProperty>
+    <hudson.security.HudsonPrivateSecurityRealm_-Details>
+      <passwordHash>VCyWDS:475052490781b5bf7b6843b4ad02815e6278e0354baa2abe63730579b009a3cf</passwordHash>
+    </hudson.security.HudsonPrivateSecurityRealm_-Details>
+    <hudson.tasks.Mailer_-UserProperty plugin="mailer@1.8">
+      <emailAddress>blueduck@gmx.net</emailAddress>
+    </hudson.tasks.Mailer_-UserProperty>
+    <hudson.plugins.favorite.user.FavoriteUserProperty plugin="favorite@1.16">
+      <favorites>
+        <string>typo3-v4-core-gerrit</string>
+      </favorites>
+    </hudson.plugins.favorite.user.FavoriteUserProperty>
+    <jenkins.security.ApiTokenProperty>
+      <apiToken>miLGRRBy6iL8Xw4Sllv5g/px9ZfMrLR7l2jpy+MvoVTH4zrbYcCyJeLWQTc26xjB</apiToken>
+    </jenkins.security.ApiTokenProperty>
+    <hudson.search.UserSearchProperty>
+      <insensitiveSearch>false</insensitiveSearch>
+    </hudson.search.UserSearchProperty>
+    <hudson.model.PaneStatusProperties>
+      <collapsed/>
+    </hudson.model.PaneStatusProperties>
+    <com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty plugin="credentials@1.10">
+      <domainCredentialsMap class="hudson.util.CopyOnWriteMap$Hash"/>
+    </com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty>
+    <hudson.plugins.ircbot.IrcUserProperty plugin="ircbot@2.25"/>
+    <hudson.plugins.jabber.user.JabberUserProperty plugin="jabber@1.25"/>
+    <jenkins.security.LastGrantedAuthoritiesProperty>
+      <roles>
+        <string>authenticated</string>
+      </roles>
+      <timestamp>1408102979440</timestamp>
+    </jenkins.security.LastGrantedAuthoritiesProperty>
+  </properties>
+</user>

@@ -1,0 +1,63 @@
+<?xml version='1.0'?><catalog>
+  <entrySet>
+    <entry>
+      <id>scriptlerweb.21002</id>
+      <name>displayJobParameters</name>
+      <comment>This scripts displays the parameters for all the jobs along with their default values (if applicable).
+Script found at &lt;a href="http://wiki.hudson-ci.org/display/HUDSON/Display+job+parameters"&gt;Hudson&lt;/a&gt;.</comment>
+      <provider>domi</provider>
+      <url></url>
+    </entry>
+    <entry>
+      <id>scriptlerweb.26001</id>
+      <name>listFailedJobs</name>
+      <comment>If you have a lot of job configured on your Hudson installation, you maybe want to have a list of job which last run fails. This script is taken from an article by &lt;a href="http://janmaterne.wordpress.com/2009/07/03/hudson-how-to-get-a-list-of-all-failed-jobs/"&gt;'Jan Materne'&lt;/a&gt;</comment>
+      <provider>domi</provider>
+      <url></url>
+    </entry>
+    <entry>
+      <id>scriptlerweb.27001</id>
+      <name>changeMvnJVMSettingsInFreestyleJobs</name>
+      <comment>This script finds all Maven Tasks registered in freestyle jobs and replace JVM Options by a new value. This script is taken from the &lt;a href="http://wiki.hudson-ci.org/display/HUDSON/Change+JVM+Options+in+all+Maven+tasks+of+Freestyle+Jobs"&gt;Hudson page&lt;/a&gt;</comment>
+      <provider>domi</provider>
+      <url></url>
+    </entry>
+    <entry>
+      <id>scriptlerweb.28001</id>
+      <name>displayTimerTriggers</name>
+      <comment>This scripts displays the timer triggers for all the jobs in order to better arrange them. Script found at &lt;a href="http://wiki.hudson-ci.org/display/HUDSON/Display+timer+triggers"&gt;Hudson&lt;/a&gt;.</comment>
+      <provider>domi</provider>
+      <url></url>
+    </entry>
+    <entry>
+      <id>scriptlerweb.29001</id>
+      <name>displayMailNotificationsRecipients</name>
+      <comment>This script displays for all jobs the list of mail recipients used for notifications. It supports, Standard mail notifications, Maven Jobs Notifications and Mail-Ext plugin. It was tested on Freestyle and Maven projects with Hudson 1.346..
+Script found at &lt;a href="http://wiki.hudson-ci.org/display/HUDSON/Display+mail+notifications+recipients"&gt;Hudson&lt;/a&gt;.</comment>
+      <provider>domi</provider>
+      <url></url>
+    </entry>
+    <entry>
+      <id>scriptlerweb.30001</id>
+      <name>disableSCMTriggerDuringNight</name>
+      <comment>This script lets you easily change all jobs running every minutes so that it gets disabled between 21:00 and 07:00 and on Saturday and Sunday.
+Script found at &lt;a href="http://wiki.hudson-ci.org/display/HUDSON/Change+SCMTrigger+for+each+project+to+disable+during+the+night+and+the+week-end"&gt;Hudson&lt;/a&gt;.</comment>
+      <provider>domi</provider>
+      <url></url>
+    </entry>
+    <entry>
+      <id>scriptlerweb.31001</id>
+      <name>getThreadDump</name>
+      <comment>Prints a thread dump of the node. Script found at &lt;a href="http://community.jboss.org/wiki/HudsonHowToDebug"&gt;Hudson&lt;/a&gt;.</comment>
+      <provider>domi</provider>
+      <url></url>
+    </entry>
+    <entry>
+      <id>scriptlerweb.35001</id>
+      <name>Clear build queue</name>
+      <comment>If you accidently trigger a lot of unneeded builds, it is useful to be able to cancel them all</comment>
+      <provider>Niels Harremoes</provider>
+      <url></url>
+    </entry>
+  </entrySet>
+</catalog>
