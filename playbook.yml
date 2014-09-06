@@ -5,3 +5,7 @@
     # - role: jenkins
     # - role: sonar
     # - role: pirum
+
+- hosts: metrics_server_dkd
+  roles:
+    - role: sonar
