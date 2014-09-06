@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<server>
+<name><%= @node[:pirum][:hostname] %></name>
+<summary><%= @node[:pirum][:name] %></summary>
+<alias><%= @node[:pirum][:repository] %></alias>
+<url>http://<%= @node[:pirum][:hostname] %></url>
+</server>
