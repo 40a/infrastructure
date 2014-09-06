@@ -1,0 +1,4 @@
+---
+  # TODO ct 2014-04-21 Add gerrit keys?
+- name: Common | Make sure git is installed
+  apt: pkg=git-core

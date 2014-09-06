@@ -1,2 +1,15 @@
 ---
-# defaults file for common
+common_packages:
+  - autoconf
+  - binutils-doc
+  - bison
+  - build-essential
+  - curl
+  - flex
+  - g++
+  - libssl-dev
+  - libtool
+  - maven2
+  - unzip
+  - wget
+  - zip

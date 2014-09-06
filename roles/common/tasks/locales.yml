@@ -1,0 +1,10 @@
+---
+- name: Generate the missing locale and reconfigure locales
+  command: locale-gen --purge en_US.UTF-8
+  sudo: true
+  ignore_errors: true
+
+- name: Reconfigure locales
+  command: echo -e 'LANG="en_US.UTF-8"\nLANGUAGE="en_US:en"\n' > /etc/default/locale
+  sudo: true
+  ignore_errors: true
