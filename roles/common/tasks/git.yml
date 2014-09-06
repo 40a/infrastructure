@@ -1,0 +1,6 @@
+---
+- name: Make sure git is installed
+  apt: pkg=git-core
+
+- name: Add gerrit keys
+  debug: msg="TODO ct 2014-04-21 Add gerrit keys?"

@@ -1,0 +1,7 @@
+---
+# This should be managed by TYPO3 Sever Team i.e. chef
+- name: Create folder
+  file: name={{ ssl_certs_dest_dir }} state=directory
+
+- name: Copy over ssl certs
+  copy: src=ssl dest={{ ssl_certs_dest_dir }} owner=root group=root mode=0600

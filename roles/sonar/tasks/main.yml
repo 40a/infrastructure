@@ -1,14 +1,4 @@
 ---
-- name: Install requirements
-  apt: pkg={{ item }}
-    state: installed
-    update_cache: yes
-    cache_valid_time: 3600
-    with_items:
-      - wget
-      - unzip
-      - maven2
-
 - name: Download archive
   get_url:
     url: http://dist.sonar.codehaus.org/sonar-{{ sonar_version }}.zip
