@@ -1,10 +1,13 @@
 ---
-# defaults file for sonar
-# set_unless[:sonar][:port]        = 80
-# set_unless[:sonar][:hostname]    = "sonar.typo3.local"
-# set_unless[:sonar][:name]        = "TYPO3 Sonar"
-# set_unless[:sonar][:version]     = "0.2"
-# set_unless[:sonar][:webroot]     = "/var/www/"
-# set_unless[:sonar][:approot]     = "/var/www/"
-
 sonar_version: 3.7.4
+sonar_plugins:
+  - sonar-clover-plugin-2.8
+  - sonar-javascript-plugin-0.3
+  - sonar-motion-chart-plugin-1.3
+  - sonar-php-plugin-0.4
+  - sonar-scm-activity-plugin-1.3
+  - sonar-security-rules-plugin-0.3.1
+  - sonar-taglist-plugin-1.0
+  - sonar-timeline-plugin-1.2
+  - sonar-views-plugin-1.6
+  - sonar-xml-plugin-0.1
