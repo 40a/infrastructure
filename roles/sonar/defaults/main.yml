@@ -7,4 +7,4 @@
 # set_unless[:sonar][:webroot]     = "/var/www/"
 # set_unless[:sonar][:approot]     = "/var/www/"
 
-sonar_version: 2.14
+sonar_version: 3.7.4

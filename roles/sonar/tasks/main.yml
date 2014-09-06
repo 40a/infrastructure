@@ -25,12 +25,12 @@
   register: new_version
 
 # - name: Fetch old plugins if available
-#   shell: ls -1 /opt/sonar/plugins
+#   shell: ls -1 /opt/sonar/extensions/plugins
 #   register: plugin_list
 #   ignore_errors: yes
 
 # - name: Copy old extensions
-#   command: cp -R /opt/sonar/plugins /opt/sonar-{{ sonar_version }}/plugins
+#   command: cp -R /opt/sonar/extensions/plugins /opt/sonar-{{ sonar_version }}/extensions/plugins
 #   when: new_version|changed and plugin_list.rc == 0
 
 - name: Apply property files
