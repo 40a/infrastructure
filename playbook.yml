@@ -1,7 +1,19 @@
 ---
-- hosts: metrics
+- hosts: metrics:metrics_server_dkd
+  sudo: yes
   roles:
     - role: common
-    # - role: jenkins
+    - role: php
+    - role: mysql
+    - role: nginx
+    - role: jenkins
     # - role: sonar
-    # - role: pirum
+    #   tags: sonar
+
+  # post_tasks:
+  #   - name: Send notification message via Slack
+  #     local_action:
+  #       module: slack
+  #       domain: future500.slack.com
+  #       token: thetokengeneratedbyslack
+  #       msg: "{{ inventory_hostname }} completed"
