@@ -1,0 +1,12 @@
+server {
+  listen   80;
+  server_name  pear.typo3.org;
+
+  access_log  /var/log/nginx/pear.typo3.org.access.log;
+  error_log  /var/log/nginx/pear.typo3.org.error.log;
+
+  location / {
+    root   /var/www/pear.typo3.org;
+    index  index.html index.htm;
+  }
+}
