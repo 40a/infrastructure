@@ -1,5 +1,5 @@
 #
-# Task handling Ansible assets
+# Tasks for managing Ansible assets
 #
 
 namespace :ansible do
