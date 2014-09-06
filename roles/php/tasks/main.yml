@@ -1,2 +1,10 @@
 ---
-# tasks file for php
+- name: Install packages
+  apt: pkg={{ item }} state=installed
+  with_items: php_packages
+
+- name: Create php.ini file
+  template: src="cli/php.ini.j2"
+            dest="/etc/php5/cli/php.ini"
+
+- include: tools.yml

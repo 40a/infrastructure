@@ -1,8 +1,8 @@
 # Overview
 
-This role installs and configures `php` (e.g. memory settings).
+This role installs and configures `php` (e.g. memory settings) and installs PEAR / PHAR packages.
 
-It is used by Jenkins to run code metrics and unit tests.
+These tools are used by Jenkins to run code metrics and unit tests.
 
 
 # Example Playbook

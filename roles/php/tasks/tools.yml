@@ -1,0 +1,38 @@
+---
+# TODO Is this still needed?
+- name: Install composer
+  get_url: url=https://getcomposer.org/composer.phar dest=/usr/local/bin/composer mode=755
+
+#- name: Update PEAR channels
+#  command: pear {{ item }}
+#  with_items:
+#   - "channel-update pear.php.net"
+#   - "update-channels"
+#   - "upgrade-all"
+
+# - name: Discover PEAR channels
+#   command: pear channel-discover {{ item }}
+#   with_items:
+#     - pear.typo3.org
+#   register: pear_discover_result
+#   changed_when: "'config-set succeeded' not in config_result.stdout"
+#   failed_when: "config_result.stderr"
+
+# - name: Install custom codesniffer packages
+#   command: pear install {{ item }}
+#   with_items:
+#     - typo3/PHPCS_TYPO3_SniffPool-alpha
+#     - typo3/PHPCS_TYPO3v4_Standard-alpha
+
+- name: php | Install tools
+  get_url: url={{ item.url }}
+           dest=/usr/local/bin/{{ item.name }}
+           mode=755
+  with_items:
+    - { name: 'phpunit', url: 'https://phar.phpunit.de/phpunit-4.1.4.phar' }
+    - { name: 'phploc',  url: 'https://phar.phpunit.de/phploc.phar' }
+    - { name: 'pdepend', url: 'http://static.pdepend.org/php/latest/pdepend.phar' }
+    - { name: 'phpmd',   url: 'http://static.phpmd.org/php/2.0.0/phpmd.phar' }
+    - { name: 'phpcpd',  url: 'https://phar.phpunit.de/phpcpd.phar' }
+    - { name: 'phpdox',  url: 'http://phpdox.de/releases/phpdox.phar' }
+    - { name: 'phpcb',   url: 'https://github.com/Mayflower/PHP_CodeBrowser/releases/download/1.1.1/phpcb-1.1.1.phar' }

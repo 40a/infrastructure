@@ -1,2 +1,7 @@
 ---
-# defaults file for php
+php_packages:
+  - php-pear
+  - php5
+  - php5-cli
+  - php5-dev
+  - php5-xdebug
