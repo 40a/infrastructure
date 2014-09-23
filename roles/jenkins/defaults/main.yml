@@ -30,6 +30,7 @@ jenkins_plugins:
   - jabber
   - javadoc
   - jdepend
+  - job-dsl
   - jobConfigHistory
   - monitoring
   - nested-view
