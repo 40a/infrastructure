@@ -38,6 +38,7 @@ jenkins_plugins:
   - persona
   - pmd
   - postbuild-task
+  - PrioritySorter
   - promoted-builds
   - redmine
   - ruby
