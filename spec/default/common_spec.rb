@@ -8,6 +8,6 @@ end
 
 describe command('java -version') do
   it {
-    should return_stdout /OpenJDK 64-Bit Server/
+    should return_stdout /Java/
   }
 end
