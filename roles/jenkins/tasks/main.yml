@@ -22,18 +22,6 @@
 
 # PACKAGE
 
-- name: Remove jenkins apt-key
-  apt_key: url='http://pkg.jenkins-ci.org/debian-stable/jenkins-ci.org.key' state=absent
-
-- name: Remove old apt repository
-  apt_repository: repo='{{ item }}' state=absent
-  with_items:
-    - 'deb http://pkg.jenkins-ci.org/debian-stable binary/'
-    - 'deb http://pkg.jenkins-ci.org/debian binary/'
-
-- name: Remove old (unstable) repository
-  file: path=/etc/apt/sources.list.d/jenkins.list state=absent
-
 - name: Create cache folder
   file: path=/var/cache/jenkins owner=jenkins group=jenkins mode=0775 state=directory
 
