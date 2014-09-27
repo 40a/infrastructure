@@ -23,6 +23,7 @@ end
 
 describe port(443) do
   it {
+    pending "To be implemented"
     should be_listening
   }
 end
