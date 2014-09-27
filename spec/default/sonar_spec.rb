@@ -1,12 +1,18 @@
 require "spec_helper"
 
 describe service("sonar") do
-  it { should be_enabled }
-  it { should be_running }
+  it {
+    pending "To be implemented"
+    should be_enabled
+    should be_running
+  }
 end
 
 describe port(9001) do
-  it { should be_listening }
+  it {
+    pending "To be implemented"
+    should be_listening
+  }
 end
 
 describe command('mysql -u root < echo "SELECT 1 FROM sonar"') do
