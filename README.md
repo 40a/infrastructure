@@ -124,7 +124,6 @@ We foster true open source spirit in order to inspire people to share.
 ├── vendor                                      - Third party tools and binaries are stored here
 ├── .travis.yml                                 - Sets up build environment on travis-ci.org: https://travis-ci.org/typo3-ci/infrastructure
 ├── ansible.cfg                                 - Default settings for ansible
-├── ansible_vault_password_file                 - Contains the password to decrypt sensitive data
 ├── Gemfile                                     - Stores all rubygems we use. Install with `bundle install` (similar to `composer install`). See http://bundler.io/ for details
 ├── Gemfile.lock                                - Dependency tree of rubygems
 ├── host.ini                                    - The hosts we manage with Ansible

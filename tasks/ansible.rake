@@ -12,6 +12,6 @@ namespace :ansible do
 
   desc "Test roles with syntax-check"
   task :syntax_check do
-    sh "ansible-playbook --vault-password-file=./ansible_vault_password_file --syntax-check -i host.ini playbook.yml"
+    sh "ansible-playbook --syntax-check -i host.ini playbook.yml"
   end
 end
